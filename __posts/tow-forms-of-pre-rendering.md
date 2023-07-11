@@ -1,6 +1,13 @@
 ---
-title: "When to Use Static Generation v.s. Server-side Rendering"
+categories:
+  - Development
+  - test
 date: "2020-01-02"
+slug: tow-forms-of-pre-rendering
+description: 설명을 적는 곳입니다
+tags:
+  - test
+title: "When to Use Static Generation v.s. Server-side Rendering"
 ---
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.

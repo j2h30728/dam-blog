@@ -5,6 +5,7 @@ import { PostData, getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Date from "@/components/date";
+import Categories from "@/components/categories";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -23,15 +24,19 @@ export default function Home({ allPostsData }: { allPostsData: PostData[] }) {
       <section className={utilStyles.headingMd}>
         <h2 className={utilStyles.headingLg}>Dam의 블로그</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>{title}</Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
+          {allPostsData.map(
+            ({ slug, date, title, description, categories }) => (
+              <li className={utilStyles.listItem} key={slug}>
+                <Link href={`/posts/${slug}`}>{title}</Link>
+                <br />
+                <Categories categories={categories} />
+                <small className={utilStyles.lightText}>
+                  <p>{description}</p>
+                  <Date dateString={date} />
+                </small>
+              </li>
+            )
+          )}
         </ul>
       </section>
     </Layout>

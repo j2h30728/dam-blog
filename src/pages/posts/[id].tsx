@@ -4,6 +4,7 @@ import Head from "next/head";
 import Date from "@/components/date";
 
 import utilStyles from "../../styles/utils.module.css";
+import Categories from "@/components/categories";
 
 export default function Post({ postData }: { postData: PostData }) {
   return (
@@ -13,6 +14,7 @@ export default function Post({ postData }: { postData: PostData }) {
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <Categories categories={postData.categories} />
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
